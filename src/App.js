@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext } from "react";
+import { List } from "./List";
+
+const colorInfo = 'red';
+export const ColorContext = createContext('red');
+
+const profileInfo = {
+  name: 'gottu91',
+  age: 31,
+};
+export const ProfileContext = createContext(profileInfo);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <p>Appだよ</p>
+      <ColorContext.Provider value={colorInfo}>
+        <ProfileContext.Provider value={profileInfo}>
+          <List></List>
+        </ProfileContext.Provider>
+      </ColorContext.Provider>
+    </>
   );
 }
 
